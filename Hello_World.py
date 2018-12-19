@@ -1,3 +1,3 @@
-print "Hello World"
-print "My name is wyw"
+print("Hello World")
+print("My name is wyw")
 
