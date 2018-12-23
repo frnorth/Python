@@ -18,4 +18,4 @@ for count in range(5):
 	counter=Counter()
 	fib(problemInitSize,counter)
 	print("%12d%15s"%(problemInitSize,counter))
-	problemInitSize*=2
+	problemInitSize *= 2
