@@ -12,5 +12,5 @@ def binarySearch(target, sortedLyst):
 	return -1
 
 if __name__ == "__main__":
-	list1=[1,2,3,5,7,9,15,25,42]
-	print(binarySearch(42,list1))
+	list1=[1,2,3,5,7,9,15,25,42.2]
+	print(binarySearch(42.2,list1))
