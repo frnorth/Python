@@ -19,3 +19,7 @@ class Array(object):
 
 	def __setitem__(self,index,newItem):
 		self._items[index]=newItem
+
+if __name__=="__main__":
+	a=Array(5,0)
+	print(a[4])
