@@ -17,8 +17,21 @@ class Link(object):
 			return -1
 		prob=self._items
 		for i in range(index):
-			prob=self._items.next
+			prob=prob.next
 		return prob.data
+
+	def find(self,fdata):
+		prob=self._items
+		j=0
+		i=0
+		while prob!=None:
+			i+=1
+			if fdata==self._items.data:
+				j+=1
+				print("%5d"%i,self._items.data)
+			prob=prob.next
+		if j==0:
+			print("not found")
 
 
 if __name__=="__main__":
@@ -43,4 +56,5 @@ if __name__=="__main__":
 	print()
 
 	l1=Link(6,0)
-	print(l1[5])
+	print(l1[4])
+	l1.find(1)
