@@ -94,11 +94,30 @@ class Link(object):
 				if prob.next==None:
 					prob.next=Node(idata,None)
 				else:
-				# prob.next=Node(idata,prob.next)
+					# prob.next=Node(idata,prob.next)
 					inode=Node(idata,prob.next)
 					prob.next=inode
 		self._length+=1
 
+	def delete(self,index):
+		prob=self._items
+		if self._length==0:
+			print("already empty")
+		else:
+			if index>=self._length or index<0:
+				print("out of range")
+				return -1
+			elif index==0:
+				self._items=self._items.next
+			else:
+				while index>1:
+					prob=prob.next
+					index-=1
+				if prob.next.next==None:
+					prob.next=None
+				else:
+					prob.next=prob.next.next
+		self._length-=1
 
 if __name__=="__main__":
 
@@ -132,4 +151,8 @@ if __name__=="__main__":
 	l1[10]=0
 	print(l1._length)
 	print(l1._length,l1[9])
+	print()
+
+	l1.delete(4)
+	l1.printLink()
 	print()
