@@ -5,13 +5,16 @@ class Node(object):
 
 class Link(object):
 
-	def __init__(self,length,data=0):
+	def __init__(self,length=0,data=0):
 		self._length=length
 		self._items=None
 		for i in range(length):
 			self._items=Node(data,self._items)
 
 	def printLink(self):
+		if self._length==0:
+			print("None")
+			return -1
 		prob=self._items
 		for i in range(self._length):
 			print("%7d"%i,end='')
@@ -20,10 +23,12 @@ class Link(object):
 			print("%7d"%prob.data,end='')
 			prob=prob.next
 		print()
-		
 
 	def __getitem__(self,index):
-		if index>self._length-1:
+		if self._length==0:
+			print("None")
+			return -1
+		elif index>=self._length or index<0:
 			print("out of range")
 			return -1
 		prob=self._items
@@ -33,7 +38,10 @@ class Link(object):
 		return prob.data
 
 	def __setitem__(self,index,sdata):
-		if index>self._length-1:
+		if self._length==0:
+			print("None")
+			return -1
+		elif index>=self._length or index<0:
 			print("out of range")
 			return -1
 		prob=self._items
@@ -70,21 +78,32 @@ class Link(object):
 			print("not found")
 
 	def insert(self,index,idata):
-		if index>self._length-1:
-			print("out of range")
-			return -1
 		prob=self._items
-		if index>0 and index<self._length-1:
-			while index>1:
-				prob=prob.next
-				index-=1
-			inode=Node(idata,prob.next)
-			prob.next=inode
-			self._length+=1
+		if self._length==0:
+			self.items=Node(idata)
+		else:
+			if index>self._length or index<0:
+				print("out of range")
+				return -1
+			elif index==0:
+				self._items=Node(idata,self._items)
+			else:
+				while index>1:
+					prob=prob.next
+					index-=1
+				if prob.next==None:
+					prob.next=Node(idata,None)
+				else:
+				# prob.next=Node(idata,prob.next)
+					inode=Node(idata,prob.next)
+					prob.next=inode
+		self._length+=1
 
 
 if __name__=="__main__":
 
+	l0=Link()
+	l0.printLink()
 	print()
 
 	l1=Link(6,0)
@@ -102,4 +121,15 @@ if __name__=="__main__":
 
 	l1.insert(3,333)
 	l1.printLink()
+	print()
+
+	l1.insert(7,999)
+	l1.printLink()
+	print()
+
+	l1.insert(0,000)
+	l1.printLink()
+	l1[10]=0
+	print(l1._length)
+	print(l1._length,l1[9])
 	print()
