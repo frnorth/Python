@@ -13,7 +13,7 @@ class Link(object):
 
 	def printLink(self):
 		if self._length==0:
-			print("None")
+			print("The Link is a None")
 			return -1
 		prob=self._items
 		for i in range(self._length):
@@ -26,7 +26,7 @@ class Link(object):
 
 	def __getitem__(self,index):
 		if self._length==0:
-			print("None")
+			print("The Link is a None")
 			return -1
 		elif index>=self._length or index<0:
 			print("out of range")
@@ -39,7 +39,7 @@ class Link(object):
 
 	def __setitem__(self,index,sdata):
 		if self._length==0:
-			print("None")
+			print("The Link is a None")
 			return -1
 		elif index>=self._length or index<0:
 			print("out of range")
@@ -88,15 +88,18 @@ class Link(object):
 			elif index==0:
 				self._items=Node(idata,self._items)
 			else:
-				while index>1:
+				# mine:
+				#while index>1:
+				while index>1 and prob.next!=None:
 					prob=prob.next
 					index-=1
-				if prob.next==None:
-					prob.next=Node(idata,None)
-				else:
-					# prob.next=Node(idata,prob.next)
-					inode=Node(idata,prob.next)
-					prob.next=inode
+				prob.next=Node(idata,prob.next)
+				# mine:
+				#if prob.next==None:
+				#	prob.next=Node(idata,None)
+				#else:
+				#	inode=Node(idata,prob.next)
+				#	prob.next=inode
 		self._length+=1
 
 	def delete(self,index):
@@ -110,13 +113,17 @@ class Link(object):
 			elif index==0:
 				self._items=self._items.next
 			else:
-				while index>1:
+				# mine:
+				#while index>1:
+				while index>1 and prob.next.next!=None:
 					prob=prob.next
 					index-=1
-				if prob.next.next==None:
-					prob.next=None
-				else:
-					prob.next=prob.next.next
+				prob.next=prob.next.next
+				# mine:
+				#if prob.next.next==None:
+				#	prob.next=None
+				#else:
+				#	prob.next=prob.next.next
 		self._length-=1
 
 if __name__=="__main__":
