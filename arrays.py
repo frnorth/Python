@@ -23,3 +23,8 @@ class Array(object):
 if __name__=="__main__":
 	a=Array(5,0)
 	print(a[4])
+	print(0 in a)
+	for i in range(5):
+		a[i]=i
+	for i in a:
+		print(i)

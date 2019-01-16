@@ -10,5 +10,5 @@ def inputcheck(num):
 		return inputcheck(num)
 
 if __name__=="__main__":
-	inputnum=inputint("input: ")
+	inputnum=inputcheck("input: ")
 	print("num is:",inputnum)

@@ -1,7 +1,7 @@
 class Node(object):
-	def __init__(self,data,next=None):
-		self.data=data
-		self.next=next
+	def __init__(self,data,after=None):
+		self._data=data
+		self._after=after
 
 class Link(object):
 
@@ -20,8 +20,8 @@ class Link(object):
 			print("%7d"%i,end='')
 		print()
 		while prob!=None:
-			print("%7d"%prob.data,end='')
-			prob=prob.next
+			print("%7d"%prob._data,end='')
+			prob=prob._after
 		print()
 
 	def __getitem__(self,index):
@@ -33,9 +33,9 @@ class Link(object):
 			return -1
 		prob=self._items
 		while index>0:
-			prob=prob.next
+			prob=prob._after
 			index-=1
-		return prob.data
+		return prob._data
 
 	def __setitem__(self,index,sdata):
 		if self._length==0:
@@ -46,19 +46,19 @@ class Link(object):
 			return -1
 		prob=self._items
 		while index>0:
-			prob=prob.next
+			prob=prob._after
 			index-=1
-		prob.data=sdata
+		prob._data=sdata
 
 	def find(self,fdata):
 		prob=self._items
 		j=0
 		i=0
 		while prob!=None:
-			if fdata==prob.data:
+			if fdata==prob._data:
 				j+=1
-				print("%5d"%i,prob.data)
-			prob=prob.next
+				print("%5d"%i,prob._data)
+			prob=prob._after
 			i+=1
 		if j==0:
 			print("not found")
@@ -68,11 +68,11 @@ class Link(object):
 		j=0
 		i=0
 		while prob!=None:
-			if fdata==prob.data:
+			if fdata==prob._data:
 				j+=1
-				prob.data=rdata
-				print("%5d"%i,fdata,prob.data)
-			prob=prob.next
+				prob._data=rdata
+				print("%5d"%i,fdata,prob._data)
+			prob=prob._after
 			i+=1
 		if j==0:
 			print("not found")
@@ -80,7 +80,7 @@ class Link(object):
 	def insert(self,index,idata):
 		prob=self._items
 		if self._length==0:
-			self.items=Node(idata)
+			self._items=Node(idata)
 		else:
 			if index>self._length or index<0:
 				print("out of range")
@@ -90,16 +90,16 @@ class Link(object):
 			else:
 				# mine:
 				#while index>1:
-				while index>1 and prob.next!=None:
-					prob=prob.next
+				while index>1 and prob._after!=None:
+					prob=prob._after
 					index-=1
-				prob.next=Node(idata,prob.next)
+				prob._after=Node(idata,prob._after)
 				# mine:
-				#if prob.next==None:
-				#	prob.next=Node(idata,None)
+				#if prob._after==None:
+				#	prob._after=Node(idata,None)
 				#else:
-				#	inode=Node(idata,prob.next)
-				#	prob.next=inode
+				#	inode=Node(idata,prob._after)
+				#	prob._after=inode
 		self._length+=1
 
 	def delete(self,index):
@@ -111,19 +111,19 @@ class Link(object):
 				print("out of range")
 				return -1
 			elif index==0:
-				self._items=self._items.next
+				self._items=self._items._after
 			else:
 				# mine:
 				#while index>1:
-				while index>1 and prob.next.next!=None:
-					prob=prob.next
+				while index>1 and prob._after._after!=None:
+					prob=prob._after
 					index-=1
-				prob.next=prob.next.next
+				prob._after=prob._after._after
 				# mine:
-				#if prob.next.next==None:
-				#	prob.next=None
+				#if prob._after.after==None:
+				#	prob._after=None
 				#else:
-				#	prob.next=prob.next.next
+				#	prob._after=prob._after.after
 		self._length-=1
 
 if __name__=="__main__":
