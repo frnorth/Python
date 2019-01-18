@@ -5,6 +5,7 @@ class ArrayBag(object):
 	def __init__(self,sourceCollection=None):
 		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
 		self._size=0
+		self._memsize=ArrayBag.DEFAULT_CAPACITY
 		if sourceCollection:
 			for item in sourceCollection:
 				self.add(item)
@@ -22,6 +23,12 @@ class ArrayBag(object):
 	def add(self,item):
 		self._items[len(self)]=item
 		self._size+=1
+		if self._size>=self._memsize:
+			self._memsize=self._memsize*2
+			tmp=Array(self._memsize)
+			for i in range(self._size):
+				tmp[i]=self._items[i]
+			self._items=tmp
 
 	def __iter__(self):
 		cursor=0
@@ -59,8 +66,9 @@ class ArrayBag(object):
 		for i in range(targetIndex,len(self)-1):
 			self._items[i]=self._items[i+1]
 		self._size-=1
-		if self._size<ArrayBag.DEFAULT_CAPACITY/2+1:
-			tmp=Array(self._size,0)
+		if self._size<=int(self._memsize/2):
+			self._memsize=int(self._memsize/2)
+			tmp=Array(self._memsize)
 			for i in range(self._size):
 				tmp[i]=self._items[i]
 			self._items=tmp
@@ -101,9 +109,16 @@ if __name__=="__main__":
 	a3.remove(1)
 	a3.remove(2)
 	a3.remove(0)
+	a3.remove(0)
 	a3.remove(1)
 	a3.remove(10)
 	a3.remove(10)
 	print(str(a3))
 	print(len(a3))
-	print()
+	print(len(a3._items))
+	print(a3._memsize)
+	a3=a3+a1+a1+a1
+	print(str(a3))
+	print(len(a3))
+	print(len(a3._items))
+	print(a3._memsize)
