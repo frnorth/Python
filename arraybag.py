@@ -122,3 +122,8 @@ if __name__=="__main__":
 	print(len(a3))
 	print(len(a3._items))
 	print(a3._memsize)
+
+	c1=ArrayBag()
+	for i in range(20):
+		c1.add('ha')
+	print(str(c1),len(c1._items))
