@@ -22,7 +22,7 @@ def test(bagType):
 	b2=bagType(b1)
 	print("Expect True:",b1==b2)
 	print("Expect False:",b1 is b2)
-	for itm in lyst:
+	for item in lyst:
 		b1.remove(item)
 	print("Expect {}:",b1)
 	print("Expect crash with KeyError:")
@@ -30,5 +30,6 @@ def test(bagType):
 
 if None:
 	print("yeah")
-test(LinkBag)
+#test(LinkBag)
+test(ArrayBag)
 	

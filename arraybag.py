@@ -17,7 +17,7 @@ class ArrayBag(object):
 		return self._size
 
 	def clear(self):
-		slef._size=0
+		self._size=0
 		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
 
 	def add(self,item):
