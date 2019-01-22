@@ -93,12 +93,12 @@ if __name__=="__main__":
 
 	# test __str__
 	print(",".join("hhhh"))
-	print(str(a1),end="\n\n")
+	print(a1,end="\n\n")
 
 	# test __add__
 	a2=a1
 	a3=a1+a2
-	print(str(a3),end="\n\n")
+	print(a3,end="\n\n")
 
 	#test __eq__
 	print(a1==a1)
@@ -113,12 +113,12 @@ if __name__=="__main__":
 	a3.remove(1)
 	a3.remove(10)
 	a3.remove(10)
-	print(str(a3))
+	print(a3)
 	print(len(a3))
 	print(len(a3._items))
 	print(a3._memsize)
 	a3=a3+a1+a1+a1
-	print(str(a3))
+	print(a3)
 	print(len(a3))
 	print(len(a3._items))
 	print(a3._memsize)
@@ -126,4 +126,5 @@ if __name__=="__main__":
 	c1=ArrayBag()
 	for i in range(20):
 		c1.add('ha')
-	print(str(c1),len(c1._items))
+	print(c1,len(c1._items))
+	print()
