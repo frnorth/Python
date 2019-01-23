@@ -1,14 +1,14 @@
+
 from arrays import Array
-class ArrayBag(object):
+from abstractbag import AbstractBag
+
+class ArrayBag(AbstractBag):
 	DEFAULT_CAPACITY=10
 
 	def __init__(self,sourceCollection=None):
 		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
-		self._size=0
 		self._memsize=ArrayBag.DEFAULT_CAPACITY
-		if sourceCollection:
-			for item in sourceCollection:
-				self.add(item)
+		AbstractBag.__init__(self,sourceCollection)
 
 	def isEmpty(self):
 		return len(self)==0
