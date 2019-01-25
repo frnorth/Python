@@ -4,10 +4,11 @@ from arraysortedbag import ArraySortedBag
 from linkbag import LinkBag
 
 def test(bagType):
-	lyst=[2013,61,1973,584,399,21,146,2000,1983]
+	lyst=[2013,61,1973,999,456,78,932,399,21,146,2000,1983]
 	print("The items of lyst is:", lyst)
 	b1=bagType(lyst)
-	print("len(b1): Expect // 9 //",len(b1))
+	print("len(b1): Expect // 12 //",len(b1))
+	print("mem alloced for b1: Expect // 20 //",b1.mem())
 	print("Expect the bag's string:",b1)
 	print("21 in b1: Expect // True //",21 in b1)
 	print("2012 in b1: Expect // False //",2012 in b1)
@@ -33,6 +34,6 @@ def test(bagType):
 if None:
 	print("yeah")
 #test(LinkBag)
-test(ArrayBag)
-#test(ArraySortedBag)
+#test(ArrayBag)
+test(ArraySortedBag)
 	

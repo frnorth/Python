@@ -19,7 +19,7 @@ class AbstractBag(object):
 		return "{"+",".join(map(str,self))+"}"
 
 	def __add__(self,other):
-		result=ArrayBag(self)
+		result=type(self)(self)
 		for item in other:
 			result.add(item)
 		return result

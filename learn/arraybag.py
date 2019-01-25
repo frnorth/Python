@@ -16,6 +16,9 @@ class ArrayBag(AbstractBag):
 	def __len__(self):
 		return self._size
 
+	def mem(self):
+		return self._memsize
+
 	def clear(self):
 		self._size=0
 		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
@@ -23,6 +26,9 @@ class ArrayBag(AbstractBag):
 	def add(self,item):
 		self._items[len(self)]=item
 		self._size+=1
+		self.checkmem()
+
+	def checkmem(self):
 		if self._size>=self._memsize:
 			self._memsize=self._memsize*2
 			tmp=Array(self._memsize)
@@ -121,7 +127,7 @@ if __name__=="__main__":
 	print(a3)
 	print(len(a3))
 	print(len(a3._items))
-	print(a3._memsize)
+	print(mem(a3))
 
 	c1=ArrayBag()
 	for i in range(20):

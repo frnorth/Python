@@ -30,6 +30,7 @@ class ArraySortedBag(ArrayBag):
 				self._items[i]=self._items[i-1]
 			self._items[targetIndex]=item
 			self._size+=1
+		self.checkmem()
 
 	def __eq__(self,other):
 		if self is other:
