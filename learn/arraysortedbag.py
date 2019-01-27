@@ -37,13 +37,25 @@ class ArraySortedBag(ArrayBag):
 			return True
 		if type(self)!=type(other) or len(self)!=len(other):
 			return False
-		for i in range(len(self)):
-			if self._items[i]!=other._items[i]:
+		#for i in range(len(self)):
+		#	if self._items[i]!=other._items[i]:
+		#		return False
+		otherIter=iter(other)
+		for item in self:
+			if item!=next(otherIter):
 				return False
 		return True
 
 
-
+if __name__=="__main__":
+	s1=ArraySortedBag()
+	s1.add(32)
+	s1.add(99)
+	s1.add(82)
+	print(s1)
+	s1Iter=iter(s1)
+	print(s1Iter)
+	print(next(s1Iter))
 
 
 
