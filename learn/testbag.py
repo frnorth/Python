@@ -33,7 +33,7 @@ def test(bagType):
 
 if None:
 	print("yeah")
-#test(LinkBag)
+test(LinkBag)
 #test(ArrayBag)
-test(ArraySortedBag)
+#test(ArraySortedBag)
 	

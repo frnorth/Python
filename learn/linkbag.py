@@ -13,6 +13,7 @@ class LinkBag(AbstractBag):
 		while prob!=None:
 			yield prob._data
 			prob=prob._after
+
 	def mem(self):
 		return len(self)
 
