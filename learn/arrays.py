@@ -21,10 +21,10 @@ class Array(object):
 		self._items[index]=newItem
 
 if __name__=="__main__":
-	a=Array(5,0)
+	a=Array(5)
 	print(a[4])
 	print(0 in a)
-	for i in range(5):
-		a[i]=i
+	#for i in range(5):
+	#	a[i]=i
 	for i in a:
 		print(i)

@@ -38,7 +38,7 @@ class ArrayBag(AbstractBag):
 
 	def remove(self,item):
 		if not item in self:
-			raise KeyError(str(item)+"not in bag")
+			raise KeyError(str(item)+" not in bag")
 		targetIndex=0
 		for targetItem in self:
 			if targetItem == item:
@@ -47,7 +47,7 @@ class ArrayBag(AbstractBag):
 		for i in range(targetIndex,len(self)-1):
 			self._items[i]=self._items[i+1]
 		self._size-=1
-		if self._size<=int(self._memsize/2):
+		if self._size<=int(self._memsize/4):
 			self._memsize=int(self._memsize/2)
 			tmp=Array(self._memsize)
 			for i in range(self._size):

@@ -9,7 +9,15 @@ def test(bagType):
 	b1=bagType(lyst)
 	print("len(b1): Expect // 12 //",len(b1))
 	print("mem alloced for b1: Expect // 20 //",b1.mem())
+	print("Expect the b1 bag's string:",b1)
+	print("--------------------------------")
+	print("remove first 7 items in b1:")
+	for i in range(7):
+		b1.remove(b1._items[0])
 	print("Expect the bag's string:",b1)
+	print("len(b1): Expect // 5 //",len(b1))
+	print("mem alloced for b1: Expect // 10 //",b1.mem())
+	print("--------------------------------")
 	print("21 in b1: Expect // True //",21 in b1)
 	print("2012 in b1: Expect // False //",2012 in b1)
 	print("Expect the items by tab:")
@@ -33,7 +41,17 @@ def test(bagType):
 
 if None:
 	print("yeah")
-test(LinkBag)
-#test(ArrayBag)
+b3=ArrayBag()
+b3.add(3)
+b3.add(5)
+b3Iter=iter(b3)
+print(b3Iter)
+b3b=next(b3Iter)
+b3b=next(b3Iter)
+print(b3Iter)
+print(b3b)
+
+#test(LinkBag)
+test(ArrayBag)
 #test(ArraySortedBag)
 	
