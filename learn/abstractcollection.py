@@ -1,7 +1,7 @@
 
 class AbstractCollention(object):
 
-	def __init__(self,sourceCollection):
+	def __init__(self,sourceCollection=None):
 		self._size=0
 		# 这个判断很重要, 不然在对链表linkbag.py中的测试中会出错
 		if sourceCollection:

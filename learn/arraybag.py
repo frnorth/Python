@@ -1,40 +1,43 @@
 
 from arrays import Array
 from abstractbag import AbstractBag
+from abstractarray import AbstractArray
 
-class ArrayBag(AbstractBag):
-	DEFAULT_CAPACITY=10
+class ArrayBag(AbstractBag,AbstractArray):
+	# DEFAULT_CAPACITY=10
 
 	def __init__(self,sourceCollection=None):
-		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
-		self._memsize=ArrayBag.DEFAULT_CAPACITY
+		AbstractArray.__init__(self)
 		AbstractBag.__init__(self,sourceCollection)
 
-	def mem(self):
-		return self._memsize
+	#def __iter__(self):
+	#	cursor=0
+	#	while cursor < len(self):
+	#		yield self._items[cursor]
+	#		cursor+=1
 
-	def clear(self):
-		self._size=0
-		self._items=Array(ArrayBag.DEFAULT_CAPACITY)
+	#def clear(self):
+	#	self._size=0
+	#	self._items=Array(ArrayBag.DEFAULT_CAPACITY)
 
 	def add(self,item):
 		self._items[len(self)]=item
 		self._size+=1
 		self.checkmem()
 
-	def checkmem(self):
-		if self._size>=self._memsize:
-			self._memsize=self._memsize*2
-			tmp=Array(self._memsize)
-			for i in range(self._size):
-				tmp[i]=self._items[i]
-			self._items=tmp
-
-	def __iter__(self):
-		cursor=0
-		while cursor < len(self):
-			yield self._items[cursor]
-			cursor+=1
+#	def checkmem(self):
+#		if self._size>=self._memsize:
+#			self._memsize=self._memsize*2
+#			tmp=Array(self._memsize)
+#			for i in range(self._size):
+#				tmp[i]=self._items[i]
+#			self._items=tmp
+#		if self._size<=int(self._memsize/4):
+#			self._memsize=int(self._memsize/2)
+#			tmp=Array(self._memsize)
+#			for i in range(self._size):
+#				tmp[i]=self._items[i]
+#			self._items=tmp
 
 	def remove(self,item):
 		if not item in self:
@@ -47,12 +50,7 @@ class ArrayBag(AbstractBag):
 		for i in range(targetIndex,len(self)-1):
 			self._items[i]=self._items[i+1]
 		self._size-=1
-		if self._size<=int(self._memsize/4):
-			self._memsize=int(self._memsize/2)
-			tmp=Array(self._memsize)
-			for i in range(self._size):
-				tmp[i]=self._items[i]
-			self._items=tmp
+		self.checkmem()
 
 if __name__=="__main__":
 	a1=ArrayBag()

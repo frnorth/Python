@@ -1,6 +1,6 @@
 
 from arraystack import ArrayStack
-from linkstack import LinkStack
+#from linkstack import LinkStack
 
 def test(stackType):
 	s=stackType()
@@ -12,7 +12,7 @@ def test(stackType):
 	print("Peeking:",s.peek())
 	print("Items from bottom to top:",s)
 	print("Length:",len(s))
-	print("Empty:",s.isEmpty)
+	print("Empty:",s.isEmpty())
 	theClone=stackType(s)
 	print("Items in clone from bottom to top:",s)
 	theClone.clear()
@@ -24,6 +24,6 @@ def test(stackType):
 	print("\nLength:",len(s))
 	print("Empty:",s.isEmpty())
 
-#test(ArrayStack)
-test(LinkStack)
+test(ArrayStack)
+#test(LinkStack)
 

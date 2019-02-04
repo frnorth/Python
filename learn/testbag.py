@@ -5,11 +5,11 @@ from linkbag import LinkBag
 
 def test(bagType):
 	lyst=[2013,61,1973,999,456,78,932,399,21,146,2000,1983]
-	print("The items of lyst is:", lyst)
+	print("The items of lyst is: \033[1;34;40m%s\033[0m" % lyst)
 	b1=bagType(lyst)
-	print("len(b1): Expect // 12 //",len(b1))
-	print("mem alloced for b1: Expect // 20 //",b1.mem())
-	print("Expect the b1 bag's string:",b1)
+	print("len(b1): Expect // \033[1;34;40m12\033[0m // \033[1;34;40m%d\033[0m" %len(b1))
+	print("mem alloced for b1: Expect // \033[1;34;40m20\033[0m // \033[1;34;40m%d\033[0m" % b1.mem())
+	print("Expect the b1 bag's string: \033[1;34;40m%s\033[0m" % b1)
 	print("--------------------------------")
 	print("remove first 7 items in b1:")
 	for i in range(7):
