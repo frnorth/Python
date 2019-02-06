@@ -14,8 +14,8 @@ class Grid(object):
 	def getWidth(self):
 		return len(self._data[0])
 
-	def __getitem__(self,index):
-		return self._data[index]
+	def __getitem__(self,indexRow):
+		return self._data[indexRow]
 
 	def __str__(self):
 		result=""
@@ -24,3 +24,8 @@ class Grid(object):
 				result+=str(self._data[row][col])+" "
 			result+="\n"
 		return result
+
+if __name__=="__main__":
+	g1=Grid(5,9,0)
+	print(g1)
+	print(g1[4][7])

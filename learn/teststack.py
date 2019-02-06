@@ -1,6 +1,6 @@
 
 from arraystack import ArrayStack
-#from linkstack import LinkStack
+from linkstack import LinkStack
 
 def test(stackType):
 	s=stackType()
@@ -24,6 +24,6 @@ def test(stackType):
 	print("\nLength:",len(s))
 	print("Empty:",s.isEmpty())
 
-test(ArrayStack)
-#test(LinkStack)
+#test(ArrayStack)
+test(LinkStack)
 
