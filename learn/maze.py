@@ -17,18 +17,18 @@ exitPointCol=10
 for i in range(15):
 	for j in range(15):
 		block=s[i*30+2*j]
-		if block == '*':
-			g1[i][j]=1
+		if block == '#':
+			g1[i][j]='#'
 		if block == ' ':
-			g1[i][j]=0
+			g1[i][j]=' '
 
 #for i in range(15):
 #	print(g1[2][i])
 
-for i in range(15):
-	for j in range(15):
-		print (g1[i][j],end=" ")
-	print()
+#for i in range(15):
+#	for j in range(15):
+#		print (g1[i][j],end=" ")
+#	print()
 
 sRow=ArrayStack()
 sCol=ArrayStack()
@@ -54,22 +54,22 @@ while sRow.peek()!=exitPointRow or sCol.peek()!=exitPointCol:
 	#print(g1[row+1][col])
 	#print(g1[row][col+1])
 	#print(g1[row-1][col])
-	if g1[row][col-1]==0:
+	if g1[row][col-1]==' ':
 		if row!=lastRow or (col-1)!=lastCol:
 			sRow.push(row)
 			sCol.push(col-1)
 			crosssite+=1
-	if g1[row+1][col]==0:
+	if g1[row+1][col]==' ':
 		if (row+1)!=lastRow or col!=lastCol:
 			sRow.push(row+1)
 			sCol.push(col)
 			crosssite+=1
-	if g1[row][col+1]==0:
+	if g1[row][col+1]==' ':
 		if row!=lastRow or (col+1)!=lastCol:
 			sRow.push(row)
 			sCol.push(col+1)
 			crosssite+=1
-	if g1[row-1][col]==0:
+	if g1[row-1][col]==' ':
 		if (row-1)!=lastRow or col!=lastCol:
 			sRow.push(row-1)
 			sCol.push(col)
@@ -111,7 +111,7 @@ while sRow.peek()!=exitPointRow or sCol.peek()!=exitPointCol:
 			svalue.push(3)
 
 while svalue.pop():
-	g1[sRow.pop()][sCol.pop()]=2
+	g1[sRow.pop()][sCol.pop()]='·'
 
 print(g1)
 
